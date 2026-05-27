@@ -9,7 +9,7 @@ async function fetchData(retries = 3) {
     const response = await fetch(API_URL);
 
     if (response.status !== 200) {
-      throw new error(response.status);
+      throw new Error(response.status);
     }
 
     const data = await response.json();
@@ -17,7 +17,28 @@ async function fetchData(retries = 3) {
     processAndRender(data);
   } catch (error) {
     console.log(error);
+    if (retries > 0) {
+      console.log(`Retrying... (${retries} attempts left)`);
+      await new setTimeout(() => fetchData(retries - 1), 1000);
+      return fetchData(retries - 1);
+    }
+    showErrorPage();
   }
+}
+
+function showErrorPage() {
+  document.body.innerHTML = `
+    <div class="container mt-5">
+
+      <div class="alert alert-danger">
+
+        Failed to load API data after
+        multiple attempts.
+
+      </div>
+
+    </div>
+  `;
 }
 
 function processAndRender(data) {
@@ -95,8 +116,8 @@ function renderTable() {
       <tr>
         <td>${user.id}</td>
         <td>${user.name}</td>
-        <td>${user.suggestedFriends || "No suggested friends available"}</td>
-        <td>${user.suggestedInterests || "No suggested interests available"}</td>
+        <td>${user.suggestedFriends || "-"}</td>
+        <td>${user.suggestedInterests || "-"}</td>
       </tr>
     `,
     )
