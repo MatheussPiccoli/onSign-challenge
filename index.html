@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OnSign TV Challenge</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Users</h1>
+
+      <div class="controls">
+        <button id="sortBtn">Sort: Name A-Z</button>
+      </div>
+
+      <table id="userTable">
+        <thead>
+          <tr>
+            <th>#ID</th>
+            <th>Name</th>
+            <th>Suggested Friends</th>
+            <th>Suggested Interests</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+
+      <div id="errorState" class="hidden">
+        <p>
+          Failed to load data after multiple attempts. Please try again later.
+        </p>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
