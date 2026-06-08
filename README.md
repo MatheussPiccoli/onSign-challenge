@@ -1,6 +1,6 @@
 # OnSign TV - Web Dev Challenge
 
-Este projeto é uma aplicação web de página única que consome uma API de usuários e processa relações de amizade e interesses para gerar recomendações personalizadas[cite: 3, 5].
+Este projeto é uma aplicação web de página única que consome uma API de usuários e processa relações de amizade e interesses para gerar recomendações personalizadas.
 
 ## Como Executar
 
